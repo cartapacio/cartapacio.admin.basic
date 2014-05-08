@@ -1,21 +1,11 @@
 'use strict';
 
-var page = require('page'),
-  $ = require('jquery'),
-  index = require('./views/index'),
-  project = require('./views/project'),
-  projects = require('./views/projects'),
-  cv = require('./views/cv')
+var $ = require('jquery'),
+  Backbone = require('backbone')
 
+Backbone.$ = $
 
-// routes
-page('/', index)
-page('/projects', projects)
-page('/project/new', project.newProject)
-page('/cv', cv)
-page('*', notfound)
-page();
+var Router = require('./router'),
+  router = new Router()
 
-function notfound () {
-  $('.main-content').html('404 not found')
-}
+Backbone.history.start()
