@@ -1,0 +1,28 @@
+{
+  "name": "cartapacio.admin.basic",
+  "version": "0.0.1",
+  "description": "Administrative interface for cartapacio",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cartapacio/cartapacio.admin.basic.git"
+  },
+  "keywords": [
+    "administrator",
+    "cartapac.io"
+  ],
+  "author": "cartapac.io",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cartapacio/cartapacio.admin.basic/issues"
+  },
+  "homepage": "https://github.com/cartapacio/cartapacio.admin.basic",
+  "dependencies": {
+    "page": "^1.3.7",
+    "jquery": "^2.1.1",
+    "browser-forms": "0.0.2"
+  }
+}
