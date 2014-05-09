@@ -1,11 +1,11 @@
 'use strict';
 
-var $ = require('jquery'),
-  Backbone = require('backbone')
+// lessify less
+var less = require('../less/main.less')
 
-Backbone.$ = $
+// bootstrap app
+var cartapacio = require('./bootstrap')
 
-var Router = require('./router'),
-  router = new Router()
 
-Backbone.history.start()
+
+

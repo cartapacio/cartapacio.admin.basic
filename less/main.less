@@ -1,0 +1,36 @@
+@projects: rgb(0, 160, 211);
+@bio: rgb(223, 146, 75);
+@config: rgb(46, 172, 131);
+
+// home
+.home{
+  margin-top: 60px;
+  .action{
+    cursor: pointer;
+    text-align: center;
+    i{
+      font-size: 100px;
+    }
+  }
+
+  .projects{
+    color: @projects;
+    &:hover{
+      color: darken(@projects, 10%);
+    }
+  }
+
+  .bio{
+    color: @bio;
+    &:hover{
+      color: darken(@bio, 10%);
+    }
+  }
+
+  .config{
+    color: @config;
+    &:hover{
+      color: darken(@config, 10%);
+    }
+  }
+}
