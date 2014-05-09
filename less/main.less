@@ -2,9 +2,12 @@
 @bio: rgb(223, 146, 75);
 @config: rgb(46, 172, 131);
 
+.main-content{
+   margin-top: 60px;
+}
+
 // home
 .home{
-  margin-top: 60px;
   .action{
     cursor: pointer;
     text-align: center;
@@ -32,5 +35,19 @@
     &:hover{
       color: darken(@config, 10%);
     }
+  }
+}
+
+.projects{
+  h4{
+    color: @projects;
+  }
+
+  #new{
+    cursor: pointer;
+    color: @projects;
+    margin-top: 30px;
+    font-size: 32px;
+    padding-left: 33px;
   }
 }

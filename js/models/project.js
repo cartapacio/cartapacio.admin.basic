@@ -6,6 +6,8 @@ var $ = require('jquery'),
 Backbone.$ = $
 
 module.exports = Backbone.Model.extend({
+  idAttribute: '_id',
+
   schema: {
     title: 'Text',
     description: 'TextArea'

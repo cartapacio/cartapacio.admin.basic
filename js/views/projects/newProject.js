@@ -42,5 +42,6 @@ module.exports = Backbone.View.extend({
   save: function(){
     console.log(this.form.commit())
     console.log(this.project)
+    this.project.save()
   }
 });
