@@ -1,10 +1,10 @@
 'use strict';
 
 var $ = require('jquery'),
-  Backbone = require('backbone')
-Backbone.$ = $
+  Backbone = require('backbone'),
+  Template = require('../../templates/Home.hbs')
 
-var HomeTemplate = require('../../templates/Home.hbs')
+Backbone.$ = $
 
 module.exports = Backbone.View.extend({
   el: '.main-content',
@@ -19,7 +19,7 @@ module.exports = Backbone.View.extend({
   },
 
   render: function(){
-    this.template = HomeTemplate()
+    this.template = Template()
     // Dynamically updates the UI with the view's template
     this.$el.html(this.template);
     return this
