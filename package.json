@@ -30,6 +30,7 @@
     "node-lessify": "0.0.3",
     "underscore": "^1.6.0",
     "nedb": "^0.10.5",
-    "nedbone": "git+https://github.com/cartapacio/nedbone.git"
+    "nedbone": "git+https://github.com/cartapacio/nedbone.git",
+    "form-serializer": "^2.0.1"
   }
 }

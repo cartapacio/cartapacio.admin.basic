@@ -7,7 +7,9 @@ var $ = require('jquery'),
   template = require('../../../templates/NewProject.hbs'),
   link = require('../../../templates/newProject/link.hbs'),
   image = require('../../../templates/newProject/image.hbs'),
-  video = require('../../../templates/newProject/video.hbs')
+  video = require('../../../templates/newProject/video.hbs'),
+  FormSerializer = require('form-serializer'),
+  serializer = new FormSerializer($)
 
 Backbone.$ = $
 
@@ -54,18 +56,8 @@ module.exports = Backbone.View.extend({
   },
 
   save: function(){
-    var linksInput = $('.link')
-    var links = []
-    _.each(linksInput, function(item){
-      var t = $(item).children(':input')
-
-      var link = {
-        name: $(t[0]).val(),
-        url: $(t[1]).val()
-      }
-
-      links.push(link)
-    })
+    var info = $('#info').serializeArray()
+    var doc = serializer.addPairs(info).serialize()
 
     var imageInput = $('.image')
     var images = []
@@ -80,27 +72,9 @@ module.exports = Backbone.View.extend({
       images.push(image)
     })
 
-    var videoInput = $('.video')
-    var videos = []
-    _.each(videoInput, function(item){
-      var t = $(item).children(':input')
+    doc.images = images
 
-      var vid = {
-        code: $(t[0]).val()
-      }
-
-      videos.push(vid)
-    })
-
-    this.project.set({
-      title: $('#title').val(),
-      description: $('#description').val(),
-      date: $('#date').val(),
-      links: links,
-      images: images,
-      videos: videos
-    })
-
-    // this.project.save()
+    this.project.set(doc)
+    console.log(doc)
   }
 });
