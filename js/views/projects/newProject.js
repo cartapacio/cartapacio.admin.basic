@@ -2,12 +2,14 @@
 
 var $ = require('jquery'),
   Backbone = require('backbone'),
-  Form = require('backbone-forms'),
   model = require('../../models/project'),
-  Template = require('../../../templates/NewProject.hbs'),
-  formTemplate = require('../../../templates/NewProjectForm.hbs')
+  template = require('../../../templates/NewProject.hbs'),
+  link = require('../../../templates/newProject/link.hbs'),
+  image = require('../../../templates/newProject/image.hbs'),
+  video = require('../../../templates/newProject/video.hbs')
 
 Backbone.$ = $
+
 
 module.exports = Backbone.View.extend({
   el: '.main-content',
@@ -16,32 +18,43 @@ module.exports = Backbone.View.extend({
     console.info('new project view --- initialize')
 
     this.project = new model()
-    this.form = new Form({
-      template: formTemplate,
-      model: this.project
-    }).render()
 
     this.render()
   },
 
   events:{
-    'click #save': 'save'
+    'click #save': 'save',
+    'click #plus-link': 'plusLink',
+    'click #plus-image': 'plusImage',
+    'click #plus-video': 'plusVideo'
   },
 
   render: function(){
-    this.template = Template()
+    this.template = template(this.project.attributes)
     // Dynamically updates the UI with the view's template
     this.$el.html(this.template);
-
-
-    $('#form').html(this.form.el)
 
     return this
   },
 
+  plusLink: function(){
+    var count = $('.link').length
+    $('#links').append(link({class:'link-'+count}))
+  },
+
+  plusImage: function(){
+    var count = $('.image').length
+    $('#images').append(image({class:'image-'+count}))
+  },
+
+  plusVideo: function(){
+    var count = $('.video').length
+    $('#videos').append(video({class:'image-'+count}))
+  },
+
   save: function(){
-    console.log(this.form.commit())
-    console.log(this.project)
-    this.project.save()
+    // console.log(this.form.commit())
+    // console.log(this.project)
+    // this.project.save()
   }
 });
