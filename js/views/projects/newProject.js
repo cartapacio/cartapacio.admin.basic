@@ -2,6 +2,7 @@
 
 var $ = require('jquery'),
   Backbone = require('backbone'),
+  _ = require('lodash'),
   model = require('../../models/project'),
   template = require('../../../templates/NewProject.hbs'),
   link = require('../../../templates/newProject/link.hbs'),
@@ -53,8 +54,53 @@ module.exports = Backbone.View.extend({
   },
 
   save: function(){
-    // console.log(this.form.commit())
-    // console.log(this.project)
+    var linksInput = $('.link')
+    var links = []
+    _.each(linksInput, function(item){
+      var t = $(item).children(':input')
+
+      var link = {
+        name: $(t[0]).val(),
+        url: $(t[1]).val()
+      }
+
+      links.push(link)
+    })
+
+    var imageInput = $('.image')
+    var images = []
+    _.each(imageInput, function(item){
+      var t = $(item).children(':input')
+
+      var image = {
+        tile: $(t[0]).val(),
+        file: $(t[1]).val()
+      }
+
+      images.push(image)
+    })
+
+    var videoInput = $('.video')
+    var videos = []
+    _.each(videoInput, function(item){
+      var t = $(item).children(':input')
+
+      var vid = {
+        code: $(t[0]).val()
+      }
+
+      videos.push(vid)
+    })
+
+    this.project.set({
+      title: $('#title').val(),
+      description: $('#description').val(),
+      date: $('#date').val(),
+      links: links,
+      images: images,
+      videos: videos
+    })
+
     // this.project.save()
   }
 });
