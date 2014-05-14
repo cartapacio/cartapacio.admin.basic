@@ -27,7 +27,7 @@ module.exports = Backbone.Router.extend({
 
   projects: function(){
     console.info('router -- projects')
-    new projectsView()
+    new projectsView({collection: window.cartapacio.collections.projects})
   },
 
   newProject: function(){

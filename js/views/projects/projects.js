@@ -2,7 +2,8 @@
 
 var $ = require('jquery'),
   Backbone = require('backbone'),
-  Template = require('../../../templates/Projects.hbs')
+  template = require('../../../templates/Projects.hbs'),
+  partial = require('../../../templates/ProjectList.hbs')
 
 Backbone.$ = $
 
@@ -15,14 +16,38 @@ module.exports = Backbone.View.extend({
   },
 
   events:{
-    'click #new': 'new'
+    'click #new': 'new',
+    'click .datail': 'detail',
+    'click .delete': 'delete'
   },
 
   render: function(){
-    this.template = Template()
-    // Dynamically updates the UI with the view's template
-    this.$el.html(this.template);
+    this.template = template()
+    this.$el.html(this.template)
+
+    // populate the table with the projects info
+    this.collection.each(function (project){
+      var data = {
+        id: project.id,
+        title: project.get('title')
+      }
+
+      var row = partial(data)
+      $('#project-list').append(row)
+    }, this)
+
     return this
+  },
+
+  delete: function(e){
+    var target = $(e.currentTarget).attr('data-id')
+    var project = this.collection.get(target)
+    project.destroy()
+  },
+
+  detail: function(e){
+    var target = $(e.currentTarget).attr('data-id')
+    window.cartapacio.router.navigate('project/'+target, {trigger: true})
   },
 
   new: function(){
