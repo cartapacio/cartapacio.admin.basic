@@ -32,7 +32,8 @@ module.exports = Backbone.View.extend({
     'click #plus-link': 'plusLink',
     'click #plus-image': 'plusImage',
     'click #plus-video': 'plusVideo',
-    'change .get-file': 'getImage'
+    'change .get-file': 'getImage',
+    'change .video-input': 'previewVideo'
   },
 
   render: function(){
@@ -73,6 +74,11 @@ module.exports = Backbone.View.extend({
       $(e.target).closest('.image').find('img').attr('src', reader.result)
     }
 
+  },
+
+  previewVideo: function(e){
+    var value = $(e.target).val()
+    $(e.target).parent().find('.video-preview').html(value)
   },
 
   save: function(){
