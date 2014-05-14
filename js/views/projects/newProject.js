@@ -75,6 +75,8 @@ module.exports = Backbone.View.extend({
     doc.images = images
 
     this.project.set(doc)
-    console.log(doc)
+
+    console.log(this.project.attributes)
+    this.project.save()
   }
 });
