@@ -6,7 +6,7 @@ var $ = require('jquery'),
 Backbone.$ = $
 
 module.exports = Backbone.Model.extend({
-  url: 'http://127.0.0.1:31173/doc',
+  urlRoot: 'http://127.0.0.1:31173/doc',
 
   idAttribute: '_id',
 

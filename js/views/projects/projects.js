@@ -42,7 +42,13 @@ module.exports = Backbone.View.extend({
   delete: function(e){
     var target = $(e.currentTarget).attr('data-id')
     var project = this.collection.get(target)
-    project.destroy()
+
+    project.destroy({
+      wait: true,
+      success: function(){
+         $(e.currentTarget).closest('tr').remove()
+      }
+    })
   },
 
   detail: function(e){
