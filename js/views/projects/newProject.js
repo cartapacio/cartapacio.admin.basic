@@ -106,5 +106,7 @@ module.exports = Backbone.View.extend({
     this.project.set(doc)
     //console.log(this.project.attributes.images)
     this.project.save()
+
+    window.cartapacio.router.navigate('/projects', {trigger: true})
   }
 });
