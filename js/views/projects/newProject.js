@@ -20,9 +20,11 @@ module.exports = Backbone.View.extend({
   initialize: function(){
     console.info('new project view --- initialize')
 
-    this.project = new model()
+    if (!this.model) {
+      this.model = new model()
+    }
 
-    this.project.on('invalid', this.handleError)
+    this.model.on('invalid', this.handleError)
 
     this.render()
   },
@@ -37,7 +39,8 @@ module.exports = Backbone.View.extend({
   },
 
   render: function(){
-    this.template = template(this.project.attributes)
+    console.log(this.model.attributes)
+    this.template = template(this.model.attributes)
     // Dynamically updates the UI with the view's template
     this.$el.html(this.template);
 
@@ -94,7 +97,7 @@ module.exports = Backbone.View.extend({
       var t = $(item).find(':input')
 
       var image = {
-        tile: $(t[0]).val(),
+        title: $(t[0]).val(),
         file: $(t[0]).closest('.image').find('img').attr('src')
       }
 
@@ -103,9 +106,9 @@ module.exports = Backbone.View.extend({
 
     doc.images = images
 
-    this.project.set(doc)
-    //console.log(this.project.attributes.images)
-    this.project.save()
+    this.model.set(doc)
+    //console.log(this.model.attributes.images)
+    this.model.save()
 
     window.cartapacio.router.navigate('/projects', {trigger: true})
   }

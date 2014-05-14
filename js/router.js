@@ -4,9 +4,9 @@ var $ = require('jquery'),
  Backbone = require('backbone')
 Backbone.$ = $
 
-var indexView = require('./views/index.js'),
-  projectsView = require('./views/projects/projects.js'),
-  newProject = require('./views/projects/newProject.js')
+var indexView = require('./views/index'),
+  projectsView = require('./views/projects/projects'),
+  newProject = require('./views/projects/newProject')
 
 module.exports = Backbone.Router.extend({
   routes:{
@@ -37,7 +37,8 @@ module.exports = Backbone.Router.extend({
 
   project: function(id){
     console.info('router --  project id: ', id)
-    //new newProject()
+    var model = window.cartapacio.collections.projects.get(id)
+    new newProject({model: model})
   },
 
   bio: function(){
