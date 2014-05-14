@@ -22,6 +22,8 @@ module.exports = Backbone.View.extend({
 
     this.project = new model()
 
+    this.project.on('invalid', this.handleError)
+
     this.render()
   },
 
@@ -55,7 +57,16 @@ module.exports = Backbone.View.extend({
     $('#videos').append(video({class:'image-'+count}))
   },
 
+  handleError: function(model, err){
+    _.each(err, function (item){
+      $('#'+item.id).parent().toggleClass('has-error')
+    })
+  },
+
   save: function(){
+    // clean validation feedback
+    $('#title, #date, #description').parent().removeClass('has-error')
+
     var info = $('#info').serializeArray()
     var doc = serializer.addPairs(info).serialize()
 
@@ -75,8 +86,6 @@ module.exports = Backbone.View.extend({
     doc.images = images
 
     this.project.set(doc)
-
-    console.log(this.project.attributes)
     this.project.save()
   }
 });
