@@ -31,7 +31,8 @@ module.exports = Backbone.View.extend({
     'click #save': 'save',
     'click #plus-link': 'plusLink',
     'click #plus-image': 'plusImage',
-    'click #plus-video': 'plusVideo'
+    'click #plus-video': 'plusVideo',
+    'change .get-file': 'getImage'
   },
 
   render: function(){
@@ -63,6 +64,17 @@ module.exports = Backbone.View.extend({
     })
   },
 
+  getImage: function(e){
+    var file = e.target.files[0],
+      reader  = new FileReader()
+
+    reader.readAsDataURL(file);
+    reader.onloadend = function () {
+      $(e.target).closest('.image').find('img').attr('src', reader.result)
+    }
+
+  },
+
   save: function(){
     // clean validation feedback
     $('#title, #date, #description').parent().removeClass('has-error')
@@ -73,11 +85,11 @@ module.exports = Backbone.View.extend({
     var imageInput = $('.image')
     var images = []
     _.each(imageInput, function(item){
-      var t = $(item).children(':input')
+      var t = $(item).find(':input')
 
       var image = {
         tile: $(t[0]).val(),
-        file: $(t[1]).val()
+        file: $(t[0]).closest('.image').find('img').attr('src')
       }
 
       images.push(image)
@@ -86,6 +98,7 @@ module.exports = Backbone.View.extend({
     doc.images = images
 
     this.project.set(doc)
+    //console.log(this.project.attributes.images)
     this.project.save()
   }
 });
