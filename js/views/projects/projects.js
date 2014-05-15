@@ -2,8 +2,7 @@
 
 var $ = require('jquery'),
   Backbone = require('backbone'),
-  template = require('../../../templates/Projects.hbs'),
-  partial = require('../../../templates/ProjectList.hbs')
+  template = require('../../../templates/Projects.hbs')
 
 Backbone.$ = $
 
@@ -27,16 +26,6 @@ module.exports = Backbone.View.extend({
     this.$el.html(this.template)
 
     console.log(this.collection)
-    // populate the table with the projects info
-    // this.collection.each(function (project){
-    //   var data = {
-    //     id: project.id,
-    //     title: project.get('title')
-    //   }
-
-    //   var row = partial(data)
-    //   $('#project-list').append(row)
-    // }, this)
 
     return this
   },
