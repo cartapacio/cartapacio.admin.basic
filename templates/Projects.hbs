@@ -5,7 +5,19 @@
   </div>
   <div class="col-md-10">
     <table id="project-list" class="table table-hover table-condensed">
+      {{#each models}}
+        <tr>
+          <td>
+            <a class="detail" data-id="{{this.id}}" href="#project/{{this.id}}">{{this.attributes.title}}</a>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger delete" data-id="{{this.id}}">
+              <i class="fa fa-times"></i>
+            </button>
+          </td>
+        </tr>
 
+      {{/each}}
     </table>
   </div>
 </div>

@@ -8,12 +8,12 @@ var $ = require('jquery'),
 Backbone.$ = $
 
 module.exports = Backbone.View.extend({
-  el: '.main-content',
+  //el: '.main-content',
 
   initialize: function(){
     console.info('projects view --- initialize')
 
-    this.render()
+    //this.render()
   },
 
   events:{
@@ -23,19 +23,20 @@ module.exports = Backbone.View.extend({
   },
 
   render: function(){
-    this.template = template()
+    this.template = template({models:this.collection.models})
     this.$el.html(this.template)
 
+    console.log(this.collection)
     // populate the table with the projects info
-    this.collection.each(function (project){
-      var data = {
-        id: project.id,
-        title: project.get('title')
-      }
+    // this.collection.each(function (project){
+    //   var data = {
+    //     id: project.id,
+    //     title: project.get('title')
+    //   }
 
-      var row = partial(data)
-      $('#project-list').append(row)
-    }, this)
+    //   var row = partial(data)
+    //   $('#project-list').append(row)
+    // }, this)
 
     return this
   },

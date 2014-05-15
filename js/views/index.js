@@ -7,11 +7,11 @@ var $ = require('jquery'),
 Backbone.$ = $
 
 module.exports = Backbone.View.extend({
-  el: '.main-content',
+  //el: '.main-content',
 
   initialize: function(){
     console.info('home view --- initialize')
-    this.render()
+    //this.render()
   },
 
   events:{

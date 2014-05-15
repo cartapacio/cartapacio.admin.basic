@@ -15,7 +15,7 @@ Backbone.$ = $
 
 
 module.exports = Backbone.View.extend({
-  el: '.main-content',
+  //el: '.main-content',
 
   initialize: function(){
     console.info('new project view --- initialize')
@@ -26,7 +26,7 @@ module.exports = Backbone.View.extend({
 
     this.model.on('invalid', this.handleError)
 
-    this.render()
+    //this.render()
   },
 
   events:{
@@ -105,10 +105,13 @@ module.exports = Backbone.View.extend({
 
     doc.images = images
 
-    this.model.set(doc)
+    //this.model.set(doc)
     //console.log(this.model.attributes.images)
-    this.model.save()
-
-    window.cartapacio.router.navigate('/projects', {trigger: true})
+    this.model.save(doc,{
+      success: function(model){
+        global.cartapacio.collections.projects.add(model)
+        global.cartapacio.router.navigate('/projects', {trigger: true})
+      }
+    })
   }
 });

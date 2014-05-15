@@ -4,6 +4,11 @@ var $ = require('jquery'),
  Backbone = require('backbone')
 Backbone.$ = $
 
+Backbone.View.prototype.close = function(){
+  this.remove();
+  this.unbind();
+}
+
 var indexView = require('./views/index'),
   projectsView = require('./views/projects/projects'),
   newProject = require('./views/projects/newProject')
@@ -22,25 +27,27 @@ module.exports = Backbone.Router.extend({
 
   index: function(){
     console.info('router -- home')
-    var v = new indexView()
+
+    this.appView(new indexView())
   },
 
   projects: function(){
     console.info('router -- projects')
-    var v = new projectsView({
+
+    this.appView(new projectsView({
       collection: global.cartapacio.collections.projects
-    })
+    }))
   },
 
   newProject: function(){
     console.info('router -- new project')
-    var v = new newProject()
+    this.appView(new newProject())
   },
 
   project: function(id){
     console.info('router --  project id: ', id)
     var model = global.cartapacio.collections.projects.get(id)
-    var v = new newProject({model:model})
+    this.appView(new newProject({model:model}))
   },
 
   bio: function(){
@@ -49,5 +56,16 @@ module.exports = Backbone.Router.extend({
 
   config: function(){
     console.info('router -- config')
+  },
+
+  appView: function(view){
+    var self = this
+    if (this.currentView){
+      self.currentView.close();
+    }
+
+    this.currentView = view;
+    this.currentView.render();
+    $(".main-content").html(this.currentView.el);
   }
 })
