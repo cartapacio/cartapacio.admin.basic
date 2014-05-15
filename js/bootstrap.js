@@ -5,17 +5,20 @@ var $ = require('jquery'),
 
 Backbone.$ = $
 
-window.cartapacio = {}
+global.cartapacio = {
+  router: new Router(),
 
-window.cartapacio.router = new Router()
-
-// collections
-var projects = new projectsCollection()
-projects.fetch({data: {doctype: 'project'}})
-
-window.cartapacio.collections = {
-  projects: projects
+  collections: {
+    projects: new projectsCollection()
+  }
 }
 
-Backbone.history.start()
+global.cartapacio.collections.projects.fetch({
+  data: {doctype: 'project'},
+  success: function(){
+    Backbone.history.start()
+  }
+})
+
+
 

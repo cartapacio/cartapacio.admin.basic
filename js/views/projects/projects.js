@@ -12,6 +12,7 @@ module.exports = Backbone.View.extend({
 
   initialize: function(){
     console.info('projects view --- initialize')
+
     this.render()
   },
 

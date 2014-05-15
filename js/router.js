@@ -22,23 +22,25 @@ module.exports = Backbone.Router.extend({
 
   index: function(){
     console.info('router -- home')
-    new indexView()
+    var v = new indexView()
   },
 
   projects: function(){
     console.info('router -- projects')
-    new projectsView({collection: window.cartapacio.collections.projects})
+    var v = new projectsView({
+      collection: global.cartapacio.collections.projects
+    })
   },
 
   newProject: function(){
     console.info('router -- new project')
-    new newProject()
+    var v = new newProject()
   },
 
   project: function(id){
     console.info('router --  project id: ', id)
-    var model = window.cartapacio.collections.projects.get(id)
-    new newProject({model: model})
+    var model = global.cartapacio.collections.projects.get(id)
+    var v = new newProject({model:model})
   },
 
   bio: function(){

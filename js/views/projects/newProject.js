@@ -39,7 +39,6 @@ module.exports = Backbone.View.extend({
   },
 
   render: function(){
-    console.log(this.model.attributes)
     this.template = template(this.model.attributes)
     // Dynamically updates the UI with the view's template
     this.$el.html(this.template);
