@@ -1,12 +1,13 @@
 'use strict';
 
 var $ = require('jquery'),
-  Backbone = require('backbone')
+  Backbone = require('backbone'),
+  config = require('../config')
 
 Backbone.$ = $
 
 module.exports = Backbone.Model.extend({
-  urlRoot: 'http://127.0.0.1:31173/doc',
+  urlRoot: config.CARTAPACIO_SERVER + '/doc',
 
   idAttribute: '_id',
 
