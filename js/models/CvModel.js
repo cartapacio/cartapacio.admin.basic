@@ -10,10 +10,7 @@ module.exports = Backbone.Model.extend({
 
   urlRoot: config.CARTAPACIO_SERVER + '/doc',
 
-  // Model Constructor
-  initialize: function() {
-
-  },
+  idAttribute: '_id',
 
   // Default values for all of the Model attributes
   defaults: {

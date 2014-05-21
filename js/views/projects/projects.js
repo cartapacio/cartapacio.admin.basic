@@ -44,10 +44,10 @@ module.exports = Backbone.View.extend({
 
   detail: function(e){
     var target = $(e.currentTarget).attr('data-id')
-    window.cartapacio.router.navigate('project/'+target, {trigger: true})
+    global.cartapacio.router.navigate('project/'+target, {trigger: true})
   },
 
   new: function(){
-    window.cartapacio.router.navigate('project/new', {trigger: true})
+    global.cartapacio.router.navigate('project/new', {trigger: true})
   }
 });

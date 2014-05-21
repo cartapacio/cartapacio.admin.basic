@@ -20,9 +20,7 @@ module.exports = Backbone.View.extend({
   initialize: function(){
     console.info('new project view --- initialize')
 
-    if (!this.model) {
-      this.model = new model()
-    }
+    this.model = this.model || new model()
 
     this.model.on('invalid', this.handleError)
 

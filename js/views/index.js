@@ -27,7 +27,7 @@ module.exports = Backbone.View.extend({
 
   action: function(e){
     var where = e.currentTarget.id
-    window.cartapacio.router.navigate(where, {trigger: true})
+    global.cartapacio.router.navigate(where, {trigger: true})
   }
 })
 

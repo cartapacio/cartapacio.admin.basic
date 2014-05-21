@@ -1,0 +1,42 @@
+<div class="col-md-12 projects">
+  <div class="col-md-2">
+    <h4><i class="fa fa-file-text"></i> Bio</h4>
+
+    <button class="btn btn-default" id="save">save</button>
+  </div>
+  <div class="col-md-10" id="form">
+    <form role="form" id="info">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" id="name" value="{{name}}">
+      </div>
+      <div class="form-group">
+        <textarea name="bio" id="bio" class="form-control" rows="10">{{bio}}</textarea>
+      </div>
+      <div class="image form-group col-md-10">
+        <div class="col-md-7">
+          <input type="file" name="portrait" class="get-file form-control">
+        </div>
+        <div class="col-md-3">
+          <img class="image-preview" src="{{portrait}}" alt="" width="200px">
+        </div>
+      </div>
+      <div class="col-md-7">
+        <input type="file" name="fullCv" class="get-file form-control">
+      </div>
+
+      <div class="col-md-10" id="exhibitions">
+        <h3>Exhibitions <i id="plus-exhibition" class="fa fa-plus"></i></h3>
+        {{#if exhibitions}}
+          {{#each exhibitions}}
+            <div class="exhibition form-group">
+              <input type="text" name="exhibitions[][title]" class="form-control" id="" value="{{this.title}}">
+              <input type="date" name="exhibitions[][date]" class="form-control" id="" value="{{this.date}}">
+              <input type="text" name="exhibitions[][location]" class="form-control" id="" value="{{this.location}}">
+            </div>
+          {{/each}}
+        {{/if}}
+      </div>
+    </form>
+  </div>
+</div>
+

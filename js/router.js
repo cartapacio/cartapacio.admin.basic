@@ -11,7 +11,8 @@ Backbone.View.prototype.close = function(){
 
 var indexView = require('./views/index'),
   projectsView = require('./views/projects/projects'),
-  newProject = require('./views/projects/newProject')
+  newProject = require('./views/projects/newProject'),
+  cvView = require('./views/CvView')
 
 module.exports = Backbone.Router.extend({
   routes:{
@@ -52,6 +53,14 @@ module.exports = Backbone.Router.extend({
 
   bio: function(){
     console.info('router -- bio')
+    var collection = global.cartapacio.collections.bio
+    var model = null
+
+    if (collection.length > 0 ){
+      model= collection.get(collection.models[0].attributes._id)
+    }
+
+    this.appView(new cvView({model: model}))
   },
 
   config: function(){
