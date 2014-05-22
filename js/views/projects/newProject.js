@@ -71,7 +71,7 @@ module.exports = Backbone.View.extend({
 
     reader.readAsDataURL(file);
     reader.onloadend = function () {
-      $(e.target).closest('.image').find('img').attr('src', reader.result)
+      $(e.target).closest('.image').find('img').attr({src: reader.result, 'data-src': reader.result})
     }
 
   },
@@ -95,7 +95,7 @@ module.exports = Backbone.View.extend({
 
       var image = {
         title: $(t[0]).val(),
-        file: $(t[0]).closest('.image').find('img').attr('src')
+        file: $(t[0]).closest('.image').find('img').attr('data-src')
       }
 
       images.push(image)
