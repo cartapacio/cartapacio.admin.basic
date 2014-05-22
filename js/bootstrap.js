@@ -7,7 +7,8 @@ var $ = require('jquery'),
   projects = require('./collections/projects'),
   cv = require('./collections/CvCollection'),
   news = require('./collections/NewsCollection'),
-  settings = require('./collections/SettingsCollection')
+  settings = require('./collections/SettingsCollection'),
+  statement = require('./collections/StatementCollection')
 
 Backbone.$ = $
 
@@ -16,7 +17,8 @@ global.cartapacio = {
     projects: new projects(),
     bio: new cv(),
     news: new news(),
-    settings: new settings()
+    settings: new settings(),
+    statement: new statement()
   }
 }
 
@@ -65,6 +67,18 @@ module.exports = {
 
             success: function(){
               next(null, 'news fetched')
+            },
+            error: function(data){
+              next(data, null)
+            }
+          })
+        },
+        function (next){
+          global.cartapacio.collections.statement.fetch({
+            data: {doctype: 'statement'},
+
+            success: function(){
+              next(null, 'statement fetched')
             },
             error: function(data){
               next(data, null)
