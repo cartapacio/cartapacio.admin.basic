@@ -4,17 +4,19 @@ var $ = require('jquery'),
   Backbone = require('backbone'),
   async = require('async'),
   Router = require('./router'),
-  projectsCollection = require('./collections/projects'),
-  cvCollection = require('./collections/CvCollection'),
-  newsCollection = require('./collections/NewsCollection')
+  projects = require('./collections/projects'),
+  cv = require('./collections/CvCollection'),
+  news = require('./collections/NewsCollection'),
+  settings = require('./collections/SettingsCollection')
 
 Backbone.$ = $
 
 global.cartapacio = {
   collections: {
-    projects: new projectsCollection(),
-    bio: new cvCollection(),
-    news: new newsCollection()
+    projects: new projects(),
+    bio: new cv(),
+    news: new news(),
+    settings: new settings()
   }
 }
 
@@ -48,6 +50,18 @@ module.exports = {
         function (next){
           global.cartapacio.collections.news.fetch({
             data: {doctype: 'news', orderBy: {date: -1}},
+
+            success: function(){
+              next(null, 'news fetched')
+            },
+            error: function(data){
+              next(data, null)
+            }
+          })
+        },
+        function (next){
+          global.cartapacio.collections.settings.fetch({
+            data: {doctype: 'settings'},
 
             success: function(){
               next(null, 'news fetched')

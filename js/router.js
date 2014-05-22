@@ -14,7 +14,8 @@ var indexView = require('./views/index'),
   newProject = require('./views/projects/newProject'),
   cvView = require('./views/CvView'),
   newsView = require('./views/news/newsView'),
-  newNews = require('./views/news/newNewsView')
+  newNews = require('./views/news/newNewsView'),
+  settingsView = require('./views/SettingsView')
 
 module.exports = Backbone.Router.extend({
   routes:{
@@ -29,7 +30,8 @@ module.exports = Backbone.Router.extend({
     'news/:id' : 'newsDetail',
 
     'bio': 'bio',
-    'config': 'config'
+
+    'settings': 'settings'
   },
 
   index: function(){
@@ -88,8 +90,17 @@ module.exports = Backbone.Router.extend({
     this.appView(new newNews({model:model}))
   },
 
-  config: function(){
-    console.info('router -- config')
+  settings: function(){
+    console.info('router -- settings')
+
+    var collection = global.cartapacio.collections.settings
+    var model = null
+
+    if (collection.length > 0 ){
+      model= collection.get(collection.models[0].attributes._id)
+    }
+
+    this.appView(new settingsView({model: model}))
   },
 
   appView: function(view){
@@ -100,6 +111,6 @@ module.exports = Backbone.Router.extend({
 
     this.currentView = view;
     this.currentView.render();
-    $(".main-content").html(this.currentView.el);
+    $('.main-content').html(this.currentView.el);
   }
 })

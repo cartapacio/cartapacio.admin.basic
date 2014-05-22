@@ -15,7 +15,7 @@ module.exports = Backbone.View.extend({
   initialize: function(){
     console.info('home Cv --- initialize')
 
-    this.model= this.model || new model()
+    this.model = this.model || new model()
   },
 
   events:{
