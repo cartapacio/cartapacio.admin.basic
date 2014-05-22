@@ -9,5 +9,8 @@ Backbone.$ = $
 
 module.exports = Backbone.Collection.extend({
   url: config.CARTAPACIO_SERVER + '/doc',
-  model: model
+
+  model: model,
+
+  comparator: '-date'
 })

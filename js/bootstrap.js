@@ -47,7 +47,7 @@ module.exports = {
         },
         function (next){
           global.cartapacio.collections.news.fetch({
-            data: {doctype: 'news'},
+            data: {doctype: 'news', orderBy: {date: -1}},
 
             success: function(){
               next(null, 'news fetched')

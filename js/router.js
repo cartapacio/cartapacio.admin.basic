@@ -12,7 +12,9 @@ Backbone.View.prototype.close = function(){
 var indexView = require('./views/index'),
   projectsView = require('./views/projects/projects'),
   newProject = require('./views/projects/newProject'),
-  cvView = require('./views/CvView')
+  cvView = require('./views/CvView'),
+  newsView = require('./views/news/newsView'),
+  newNews = require('./views/news/newNewsView')
 
 module.exports = Backbone.Router.extend({
   routes:{
@@ -21,6 +23,10 @@ module.exports = Backbone.Router.extend({
     'projects': 'projects',
     'project/new' : 'newProject',
     'project/:id' : 'project',
+
+    'news': 'news',
+    'news/new' : 'newNews',
+    'news/:id' : 'newsDetail',
 
     'bio': 'bio',
     'config': 'config'
@@ -61,6 +67,25 @@ module.exports = Backbone.Router.extend({
     }
 
     this.appView(new cvView({model: model}))
+  },
+
+  news: function(){
+    console.info('router -- news')
+
+    this.appView(new newsView({
+      collection: global.cartapacio.collections.news
+    }))
+  },
+
+  newNews: function(){
+    console.info('router -- new news')
+    this.appView(new newNews())
+  },
+
+  newsDetail: function(id){
+    console.info('router --  news id: ', id)
+    var model = global.cartapacio.collections.news.get(id)
+    this.appView(new newNews({model:model}))
   },
 
   config: function(){
