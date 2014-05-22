@@ -5,9 +5,9 @@ var $ = require('jquery'),
   _ = require('lodash'),
   model = require('../../models/project'),
   template = require('../../../templates/NewProject.hbs'),
-  link = require('../../../templates/newProject/link.hbs'),
-  image = require('../../../templates/newProject/image.hbs'),
-  video = require('../../../templates/newProject/video.hbs'),
+  link = require('../../../templates/partials/link.hbs'),
+  image = require('../../../templates/partials/image.hbs'),
+  video = require('../../../templates/partials/video.hbs'),
   FormSerializer = require('form-serializer'),
   serializer = new FormSerializer($)
 

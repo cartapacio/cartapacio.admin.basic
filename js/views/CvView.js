@@ -5,7 +5,7 @@ var $ = require('jquery'),
   FormSerializer = require('form-serializer'),
   serializer = new FormSerializer($),
   template = require('../../templates/Cv.hbs'),
-  exhibition = require('../../templates/exhibition.hbs'),
+  exhibition = require('../../templates/partials/exhibition.hbs'),
   model = require('../models/CvModel')
 
 Backbone.$ = $

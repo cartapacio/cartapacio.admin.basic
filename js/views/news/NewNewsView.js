@@ -5,7 +5,7 @@ var $ = require('jquery'),
   FormSerializer = require('form-serializer'),
   serializer = new FormSerializer($),
   model = require('../../models/NewsModel'),
-  template = require('../../../templates/news/NewNews.hbs')
+  template = require('../../../templates/NewNews.hbs')
 
 Backbone.$ = $
 
