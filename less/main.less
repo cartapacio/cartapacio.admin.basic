@@ -11,17 +11,53 @@
          url('../assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.svg#sinkin_sans400_regular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
+@font-face {
+    font-family: 'sinkin_sans600_SemiBold';
+    src: url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.eot');
+    src: url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.woff') format('woff'),
+         url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.ttf') format('truetype'),
+         url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.svg#sinkin_sans400_regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// general styles
+
 body{
-  font-family: 'sinkin_sans400_regular'
+  font-family: 'sinkin_sans400_regular';
+  b{
+    font-family: 'sinkin_sans600_SemiBold';
+  }
+  article{
+    background-color: #E2E5D8;
+    padding: 20px;
+    &:focus{
+      outline: rgb(201, 201, 201) solid 1px;
+    }
+  }
 }
 
 .main-content{
    margin-top: 60px;
    margin-bottom: 100px;
 }
+
+.articles-bottom{
+  margin-bottom: 20px;
+}
+
+// news
+.news{
+  #form{
+    #title{
+      .articles-bottom;
+    }
+  }
+}
+
 
 // home
 .home{
