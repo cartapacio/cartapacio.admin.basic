@@ -1,6 +1,6 @@
 {
   "name": "cartapacio.admin.basic",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Administrative interface for cartapacio",
   "main": "js/index.js",
   "browserify": {
