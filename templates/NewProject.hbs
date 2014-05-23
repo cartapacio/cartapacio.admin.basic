@@ -19,7 +19,7 @@
         <h3>links <i id="plus-link" class="fa fa-plus"></i></h3>
         {{#if links}}
           {{#each links}}
-          <div class="col-md-9 link">
+          <div id="link-{{@index}}" class="col-md-9 link">
             <div class="col-md-offset-1 col-md-7 form-group">
               <label>name</label>
               <input type="text" name="links[][name]" class="form-control" id="" value="{{this.name}}">
@@ -39,7 +39,7 @@
         <h3>videos <i id="plus-video" class="fa fa-plus"></i></h3>
         {{#if videos}}
           {{#each videos}}
-          <div class="video col-md-11">
+          <div id="video-{{@index}}" class="video col-md-11">
             <div class="col-md-10">
               <input type="text" name="videos[][code]" class="video-input form-control" value="{{this.code}}">
               <div class="video-preview">
@@ -60,7 +60,7 @@
       <h3>images <i id="plus-image" class="fa fa-plus"></i></h3>
       {{#if images}}
         {{#each images}}
-          <div class="image form-group col-md-12">
+          <div id="image-{{@index}}" class="image form-group col-md-12">
             <div class="col-md-7">
               <input type="text" name="images[][title]" class="form-control" value="{{this.title}}">
               <input type="file" name="images[][file]" class="get-file form-control">

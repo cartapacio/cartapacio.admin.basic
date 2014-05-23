@@ -11,6 +11,8 @@ var $ = require('jquery'),
   FormSerializer = require('form-serializer'),
   serializer = new FormSerializer($)
 
+require('jquery-scrollto')
+
 Backbone.$ = $
 
 
@@ -51,17 +53,23 @@ module.exports = Backbone.View.extend({
 
   plusLink: function(){
     var count = $('.link').length
-    $('#links').append(link({class:'link-'+count}))
+    $('#links').append(link({index: count}))
+
+    $('#link-'+count).ScrollTo()
   },
 
   plusImage: function(){
     var count = $('.image').length
-    $('#images').append(image({class:'image-'+count}))
+    $('#images').append(image({index: count}))
+
+    $('#image-'+count).ScrollTo()
   },
 
   plusVideo: function(){
     var count = $('.video').length
-    $('#videos').append(video({class:'image-'+count}))
+    $('#videos').append(video({index: count}))
+
+    $('#video-'+count).ScrollTo()
   },
 
   destroyLink: function(e){
