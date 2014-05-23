@@ -34,7 +34,7 @@ module.exports = Backbone.View.extend({
     news.destroy({
       wait: true,
       success: function(){
-         $(e.currentTarget).closest('tr').remove()
+         $(e.currentTarget).closest('li').remove()
       }
     })
   },
