@@ -34,6 +34,8 @@ module.exports = Backbone.View.extend({
     'click #plus-video': 'plusVideo',
 
     'click .delete-link': 'destroyLink',
+    'click .delete-video': 'destroyVideo',
+    'click .delete-image': 'destroyImage',
 
     'change .get-file': 'getImage',
     'change .video-input': 'previewVideo'
@@ -63,8 +65,19 @@ module.exports = Backbone.View.extend({
   },
 
   destroyLink: function(e){
-    console.log()
     this.$(e.currentTarget).closest('.link').fadeOut('slow', function (){
+      $(this).remove()
+    })
+  },
+
+  destroyVideo: function(e){
+    this.$(e.currentTarget).closest('.video').fadeOut('slow', function (){
+      $(this).remove()
+    })
+  },
+
+  destroyImage: function(e){
+    this.$(e.currentTarget).closest('.image').fadeOut('slow', function (){
       $(this).remove()
     })
   },

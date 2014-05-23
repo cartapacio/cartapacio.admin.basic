@@ -1,4 +1,13 @@
-<div class="videos form-group">
-  <input type="text" name="videos[][code]" class="{{class}} video-input form-control" id="{{text}}" placeholder="embed code">
-  <div class="video-preview"></div>
+<div class="video col-md-11">
+  <div class="col-md-10">
+    <input type="text" name="videos[][code]" class="video-input form-control" value="{{this.code}}">
+    <div class="video-preview">
+      {{{this.code}}}
+    </div>
+  </div>
+  <div class="col-md-1 item-remove">
+    <span>
+      <i class="fa fa-eraser delete-video"></i>
+    </span>
+  </div>
 </div>

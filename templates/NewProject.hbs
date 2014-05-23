@@ -35,16 +35,23 @@
           {{/each}}
         {{/if}}
       </div>
-      <div class="col-md-10" id="videos">
+      <div class="col-md-11" id="videos">
         <h3>videos <i id="plus-video" class="fa fa-plus"></i></h3>
         {{#if videos}}
           {{#each videos}}
-            <div class="videos form-group">
+          <div class="video col-md-11">
+            <div class="col-md-10">
               <input type="text" name="videos[][code]" class="video-input form-control" value="{{this.code}}">
               <div class="video-preview">
                 {{{this.code}}}
               </div>
             </div>
+            <div class="col-md-1 item-remove">
+              <span>
+                <i class="fa fa-eraser delete-video"></i>
+              </span>
+            </div>
+          </div>
           {{/each}}
         {{/if}}
       </div>
@@ -53,13 +60,16 @@
       <h3>images <i id="plus-image" class="fa fa-plus"></i></h3>
       {{#if images}}
         {{#each images}}
-          <div class="image form-group col-md-10">
+          <div class="image form-group col-md-12">
             <div class="col-md-7">
               <input type="text" name="images[][title]" class="form-control" value="{{this.title}}">
               <input type="file" name="images[][file]" class="get-file form-control">
             </div>
-            <div class="col-md-3">
-              <img class="image-preview" data-src="{{this.file}}" src="http://localhost:31173/{{this.file}}" alt="" width="200px">
+            <div class="col-md-5">
+              <img class="image-preview" data-src="{{this.file}}" src="http://localhost:31173/{{this.file}}" alt="" height="80">
+              <span class="item-remove">
+                <i class="fa fa-eraser delete-image"></i>
+              </span>
             </div>
           </div>
         {{/each}}
