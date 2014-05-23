@@ -1,4 +1,13 @@
-<div class="link form-group">
-  <input type="text" name="links[][name]" class="{{class}} form-control" id="{{text}}" placeholder="name">
-  <input type="url" name="links[][url]" class="{{class}} form-control" id="{{url}}" placeholder="http://domain.com">
+<div class="col-md-9 link">
+  <div class="col-md-offset-1 col-md-7 form-group">
+    <label>name</label>
+    <input type="text" name="links[][name]" class="form-control" id="" value="{{this.name}}">
+    <label>url</label>
+    <input type="url" name="links[][url]" class="form-control" id="" value="{{this.url}}">
+  </div>
+  <div class="col-md-2 item-remove">
+    <span>
+      <i class="fa fa-eraser delete-link"></i>
+    </span>
+  </div>
 </div>
