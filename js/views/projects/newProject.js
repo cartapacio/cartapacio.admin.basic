@@ -9,7 +9,8 @@ var $ = require('jquery'),
   image = require('../../../templates/partials/image.hbs'),
   video = require('../../../templates/partials/video.hbs'),
   FormSerializer = require('form-serializer'),
-  serializer = new FormSerializer($)
+  serializer = new FormSerializer($),
+  grande = require('grande-module')
 
 require('jquery-scrollto')
 
@@ -47,6 +48,8 @@ module.exports = Backbone.View.extend({
     this.template = template(this.model.attributes)
     // Dynamically updates the UI with the view's template
     this.$el.html(this.template);
+
+    grande.bind(this.$('#description')[0])
 
     return this
   },
@@ -118,6 +121,8 @@ module.exports = Backbone.View.extend({
 
     var info = $('#info').serializeArray()
     var doc = serializer.addPairs(info).serialize()
+
+    doc.description = this.$('#description')[0].innerHTML
 
     var imageInput = $('.image')
     var images = []

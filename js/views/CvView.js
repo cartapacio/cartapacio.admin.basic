@@ -4,6 +4,7 @@ var $ = require('jquery'),
   Backbone = require('backbone'),
   FormSerializer = require('form-serializer'),
   serializer = new FormSerializer($),
+  grande = require('grande-module'),
   template = require('../../templates/Cv.hbs'),
   exhibition = require('../../templates/partials/exhibition.hbs'),
   model = require('../models/CvModel')
@@ -28,6 +29,8 @@ module.exports = Backbone.View.extend({
     this.template = template(this.model.attributes)
     // Dynamically updates the UI with the view's template
     this.$el.html(this.template);
+
+    grande.bind(this.$('#bio')[0])
 
     return this
   },
@@ -63,7 +66,8 @@ module.exports = Backbone.View.extend({
     var info = $('#info').serializeArray()
     var doc = serializer.addPairs(info).serialize()
 
-    this.model.set(doc)
+    doc.bio = this.$('#bio')[0].innerHTML
+
     //console.log(this.model.attributes.images)
     this.model.save(doc,{
       success: function(model){

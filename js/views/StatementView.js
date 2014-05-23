@@ -2,8 +2,7 @@
 
 var $ = require('jquery'),
   Backbone = require('backbone'),
-  FormSerializer = require('form-serializer'),
-  serializer = new FormSerializer($),
+  grande = require('grande-module'),
   template = require('../../templates/Statement.hbs'),
   model = require('../models/StatementModel')
 
@@ -26,12 +25,15 @@ module.exports = Backbone.View.extend({
     this.template = template(this.model.attributes)
     // Dynamically updates the UI with the view's template
     this.$el.html(this.template);
+    grande.bind(this.$('#statement')[0])
+
     return this
   },
 
   save: function(){
-    var info = $('#statement-form').serializeArray()
-    var doc = serializer.addPairs(info).serialize()
+    var doc = {
+      statement: this.$('#statement')[0].innerHTML
+    }
 
     this.model.save(doc, {
       success: function(model){

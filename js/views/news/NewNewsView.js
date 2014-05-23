@@ -27,7 +27,7 @@ module.exports = Backbone.View.extend({
     // Dynamically updates the UI with the view's template
     this.$el.html(this.template)
 
-    grande.bind($(this.template).find('#body')[0])
+    grande.bind(this.$('#body')[0])
 
     return this
   },
@@ -39,7 +39,7 @@ module.exports = Backbone.View.extend({
     var doc = serializer.addPairs(info).serialize()
 
     doc.date = new Date()
-    doc.body = $('#body')[0].innerHTML
+    doc.body = this.$('#body')[0].innerHTML
 
     this.model.save(doc,{
       success: function(model){
