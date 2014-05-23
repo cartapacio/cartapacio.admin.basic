@@ -13,6 +13,7 @@ module.exports = Backbone.Model.extend({
 
   defaults:{
     doctype: 'project',
+    order: 0,
     title: 'title of the project',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, repellendus, ad, non ipsam accusamus magnam dolore quae pariatur doloribus repellat laborum ex possimus explicabo id nesciunt. Autem, perferendis amet repellendus.',
     date: 'the format you prefer',

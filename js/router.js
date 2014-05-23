@@ -2,6 +2,7 @@
 
 var $ = require('jquery'),
  Backbone = require('backbone')
+
 Backbone.$ = $
 
 Backbone.View.prototype.close = function(){
@@ -126,5 +127,6 @@ module.exports = Backbone.Router.extend({
     this.currentView = view;
     this.currentView.render();
     $('.main-content').html(this.currentView.el);
+
   }
 })

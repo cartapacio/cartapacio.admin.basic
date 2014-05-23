@@ -9,5 +9,6 @@ Backbone.$ = $
 
 module.exports = Backbone.Collection.extend({
   url: config.CARTAPACIO_SERVER + '/doc',
-  model: projects
+  model: projects,
+  comparator: 'order'
 })

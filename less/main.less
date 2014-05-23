@@ -87,15 +87,36 @@ body{
 
 //project list
 #project-list{
+  padding-left: 0;
+  li{
+    list-style: none;
+    margin-bottom: 10px;
+  }
   a{
     color: #449471;
     text-decoration: none;
-    font-size: 25px;
-    padding-left: 30px;
 
     &:hover{
       color: #C4C4C4;
       text-decoration: none;
+    }
+  }
+
+  .delete{
+    color: #b6222c;
+    font-size: 14px;
+    margin-left: 10px;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  .move{
+    color: #61b66e;
+    font-size: 14px;
+    margin-left: 10px;
+    &:hover{
+      cursor: move;
     }
   }
 }

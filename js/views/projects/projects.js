@@ -1,18 +1,18 @@
 'use strict';
 
 var $ = require('jquery'),
+  _ = require('lodash'),
   Backbone = require('backbone'),
   template = require('../../../templates/Projects.hbs')
+
+require('jquery-ui/sortable')
 
 Backbone.$ = $
 
 module.exports = Backbone.View.extend({
-  //el: '.main-content',
 
   initialize: function(){
     console.info('projects view --- initialize')
-
-    //this.render()
   },
 
   events:{
@@ -25,9 +25,25 @@ module.exports = Backbone.View.extend({
     this.template = template({models:this.collection.models})
     this.$el.html(this.template)
 
-    console.log(this.collection)
+    var self = this
+
+    this.$('#project-list').sortable({
+      axis: "y",
+      update: function (){
+        self.sort($(this).sortable('toArray'))
+      }
+    })
+    this.$('#project-list').disableSelection()
 
     return this
+  },
+
+  sort: function(order){
+    _.each(order, function (item, index){
+      var model = this.collection.get(item)
+      model.set({order: index})
+      model.save()
+    }, this)
   },
 
   delete: function(e){
@@ -37,7 +53,7 @@ module.exports = Backbone.View.extend({
     project.destroy({
       wait: true,
       success: function(){
-         $(e.currentTarget).closest('tr').remove()
+         $(e.currentTarget).closest('li').remove()
       }
     })
   },

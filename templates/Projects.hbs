@@ -3,21 +3,20 @@
     <h4><i class="fa fa-file-text-o"></i> projects</h4>
     <div id="new" class="new"><i class="fa fa-plus-square-o"></i></div>
   </div>
-  <div class="col-md-10">
-    <table id="project-list" class="table table-hover table-condensed">
-      {{#each models}}
-        <tr>
-          <td>
+    <div class="col-md-8">
+      <ul id="project-list">
+        {{#each models}}
+          <li id="{{this.id}}">
             <a class="detail" data-id="{{this.id}}" href="#project/{{this.id}}">{{this.attributes.title}}</a>
-          </td>
-          <td>
-            <button type="button" class="btn btn-danger delete" data-id="{{this.id}}">
-              <i class="fa fa-times"></i>
-            </button>
-          </td>
-        </tr>
 
-      {{/each}}
-    </table>
+            <span class="delete" data-id="{{this.id}}">
+              <i class="fa fa-eraser"></i>
+            </span>
+
+            <span class="move"> <i class="fa fa-arrows-v"></i></span>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
 </div>
