@@ -137,7 +137,9 @@ module.exports = Backbone.View.extend({
         file: $(t[0]).closest('.image').find('img').attr('data-src')
       }
 
-      images.push(image)
+      if(image.file){
+        images.push(image)
+      }
     })
 
     doc.images = images
