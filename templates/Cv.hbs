@@ -32,14 +32,22 @@
         <h3>Exhibitions <i id="plus-exhibition" class="fa fa-plus"></i></h3>
         {{#if exhibitions}}
           {{#each exhibitions}}
-            <div class="col-md-offset-1 exhibition form-group">
-              <label for="">title</label>
-              <input type="text" name="exhibitions[][title]" class="form-control" id="" value="{{this.title}}">
-              <label for="">date</label>
-              <input type="date" name="exhibitions[][date]" class="form-control" id="" value="{{this.date}}">
-              <label for="">location</label>
-              <input type="text" name="exhibitions[][location]" class="form-control" id="" value="{{this.location}}">
+            <div id="exhibition-{{@index}}" class="exhibition col-offset-1 col-md-10">
+              <div class="col-md-8 ">
+                <label for="">title</label>
+                <input type="text" name="exhibitions[][title]" class="form-control" id="" value="{{this.title}}">
+                <label for="">date</label>
+                <input type="date" name="exhibitions[][date]" class="form-control" id="" value="{{this.date}}">
+                <label for="">location</label>
+                <input type="text" name="exhibitions[][location]" class="form-control" id="" value="{{this.location}}">
+              </div>
+              <div class="col-md-offset-1 col-md-1">
+                <span class="item-remove">
+                  <i class="fa fa-eraser delete-exhibition"></i>
+                </span>
+              </div>
             </div>
+
           {{/each}}
         {{/if}}
       </div>

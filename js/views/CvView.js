@@ -9,6 +9,8 @@ var $ = require('jquery'),
   exhibition = require('../../templates/partials/exhibition.hbs'),
   model = require('../models/CvModel')
 
+require('jquery-scrollto')
+
 Backbone.$ = $
 
 module.exports = Backbone.View.extend({
@@ -21,6 +23,7 @@ module.exports = Backbone.View.extend({
 
   events:{
     'click #save': 'save',
+    'click .delete-exhibition': 'destroyExhibition',
     'change .get-file': 'getFile',
     'click #plus-exhibition': 'plusExhibition'
   },
@@ -37,7 +40,9 @@ module.exports = Backbone.View.extend({
 
   plusExhibition: function(){
     var count = $('.exhibition').length
-    $('#exhibitions').append(exhibition({class:'exhibition-'+count}))
+    $('#exhibitions').append(exhibition({id:count}))
+
+    $('#exhibition-'+count).ScrollTo()
   },
 
   getFile: function(e){
@@ -73,7 +78,13 @@ module.exports = Backbone.View.extend({
         global.cartapacio.router.navigate('/', {trigger: true})
       }
     })
-  }
+  },
+
+  destroyExhibition: function(e){
+    this.$(e.currentTarget).closest('.exhibition').fadeOut('slow', function (){
+      $(this).remove()
+    })
+  },
 })
 
 

@@ -1,8 +1,15 @@
-<div class="col-md-offset-1 exhibition form-group">
-  <label for="">title</label>
-  <input type="text" name="exhibitions[][title]" class="form-control" id="" value="tile">
-  <label for="">date</label>
-  <input type="date" name="exhibitions[][date]" class="form-control" id="" value="">
-  <label for="">location</label>
-  <input type="text" name="exhibitions[][location]" class="form-control" id="" value="location">
+<div id="exhibition-{{id}}" class="exhibition col-offset-1 col-md-10">
+  <div class="col-md-8 ">
+    <label for="">title</label>
+    <input type="text" name="exhibitions[][title]" class="form-control" id="" value="">
+    <label for="">date</label>
+    <input type="date" name="exhibitions[][date]" class="form-control" id="" value="">
+    <label for="">location</label>
+    <input type="text" name="exhibitions[][location]" class="form-control" id="" value="">
+  </div>
+  <div class="col-md-offset-1 col-md-1">
+    <span class="item-remove">
+      <i class="fa fa-eraser delete-exhibition"></i>
+    </span>
+  </div>
 </div>
