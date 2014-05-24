@@ -32,6 +32,9 @@ module.exports = Backbone.View.extend({
 
   events:{
     'click #save': 'save',
+    'click #delete': 'delete',
+    'click #cancel': 'cancel',
+
     'click #plus-link': 'plusLink',
     'click #plus-image': 'plusImage',
     'click #plus-video': 'plusVideo',
@@ -147,5 +150,17 @@ module.exports = Backbone.View.extend({
         global.cartapacio.router.navigate('/projects', {trigger: true})
       }
     })
+  },
+
+  delete: function(){
+    this.model.destroy({
+      success: function(){
+        global.cartapacio.router.navigate('/projects', {trigger: true})
+      }
+    })
+  },
+
+  cancel: function(){
+    global.cartapacio.router.navigate('/projects', {trigger: true})
   }
 });

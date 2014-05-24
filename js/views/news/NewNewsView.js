@@ -19,7 +19,9 @@ module.exports = Backbone.View.extend({
   },
 
   events:{
-    'click #save' : 'new'
+    'click #save' : 'new',
+    'click #delete': 'delete',
+    'click #cancel': 'cancel',
   },
 
   render: function(){
@@ -49,6 +51,18 @@ module.exports = Backbone.View.extend({
         global.cartapacio.router.navigate('/news', {trigger: true})
       }
     })
+  },
+
+  delete: function(){
+    this.model.destroy({
+      success: function(){
+        global.cartapacio.router.navigate('/news', {trigger: true})
+      }
+    })
+  },
+
+  cancel: function(){
+    global.cartapacio.router.navigate('/news', {trigger: true})
   }
 
 })
