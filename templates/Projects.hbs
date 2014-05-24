@@ -3,11 +3,13 @@
     <h4><i class="fa fa-file-text-o"></i> projects</h4>
     <div id="new" class="new"><i class="fa fa-plus-square-o"></i></div>
   </div>
-    <div class="col-md-8">
+    <div class="col-md-10 right">
       <ul id="project-list">
         {{#each models}}
           <li id="{{this.id}}">
-            <a class="detail" data-id="{{this.id}}" href="#project/{{this.id}}">{{this.attributes.title}}</a>
+            <span class="project-title">
+              <a class="detail" data-id="{{this.id}}" href="#project/{{this.id}}">{{this.attributes.title}}</a>
+            </span>
 
             <span class="delete" data-id="{{this.id}}">
               <i class="fa fa-eraser"></i>
