@@ -1,6 +1,6 @@
 {
   "name": "cartapacio.admin.basic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Administrative interface for cartapacio",
   "main": "js/index.js",
   "browserify": {
@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "beefy js/index.js:js/bundle.js --live ",
-    "build": "browserify js/index.js -o js/bundle.js",
+    "build": "./build.sh",
     "createProjects": "casperjs test/fillDb/projects.js",
     "createNews": "casperjs test/fillDb/news.js",
     "createBio": "casperjs test/fillDb/bio.js",
@@ -51,6 +51,7 @@
   "devDependencies": {
     "chance": "^0.5.6",
     "moment": "^2.6.0",
-    "lorem-ipsum": "^1.0.1"
+    "lorem-ipsum": "^1.0.1",
+    "uglify-js": "^2.4.13"
   }
 }

@@ -27,3 +27,4 @@ vendor
 config.json
 cartapacio-admin.sublime-project
 cartapacio-admin.sublime-workspace
+dist
