@@ -4,11 +4,21 @@
   "description": "Administrative interface for cartapacio",
   "main": "js/index.js",
   "browserify": {
-    "transform": [ "hbsfy", "node-lessify", "debowerify" ]
+    "transform": [
+      "hbsfy",
+      "node-lessify",
+      "debowerify"
+    ]
   },
   "scripts": {
     "start": "beefy js/index.js:js/bundle.js --live ",
-    "build": "browserify js/index.js -o js/bundle.js"
+    "build": "browserify js/index.js -o js/bundle.js",
+    "createProjects": "casperjs test/fillDb/projects.js",
+    "createNews": "casperjs test/fillDb/news.js",
+    "createBio": "casperjs test/fillDb/bio.js",
+    "createSettings": "casperjs test/fillDb/settings.js",
+    "createStatement": "casperjs test/fillDb/statement.js",
+    "simpleServer": "python -m SimpleHTTPServer"
   },
   "repository": {
     "type": "git",
@@ -37,5 +47,10 @@
     "lodash": "^2.4.1",
     "jquery-scrollto": "^1.4.4",
     "debowerify": "^0.7.1"
+  },
+  "devDependencies": {
+    "chance": "^0.5.6",
+    "moment": "^2.6.0",
+    "lorem-ipsum": "^1.0.1"
   }
 }

@@ -53,8 +53,6 @@ module.exports = Backbone.View.extend({
       } else {
         self.model.set({full_cv: reader.result})
       }
-
-      console.log(self.model)
     }
 
   },
