@@ -17,7 +17,8 @@ var indexView = require('./views/index'),
   newsView = require('./views/news/newsView'),
   newNews = require('./views/news/newNewsView'),
   settingsView = require('./views/SettingsView'),
-  statementView = require('./views/StatementView')
+  statementView = require('./views/StatementView'),
+  DbConfig = require('./views/FileExplorerView')
 
 module.exports = Backbone.Router.extend({
   routes:{
@@ -33,7 +34,8 @@ module.exports = Backbone.Router.extend({
 
     'bio': 'bio',
     'statement': 'statement',
-    'settings': 'settings'
+    'settings': 'settings',
+    'dbConfig': 'dbConfig'
   },
 
   index: function(){
@@ -116,6 +118,11 @@ module.exports = Backbone.Router.extend({
     }
 
     this.appView(new statementView({model: model}))
+  },
+
+  dbConfig: function(){
+    console.info('router -- dbconfig')
+    this.appView(new DbConfig())
   },
 
   appView: function(view){

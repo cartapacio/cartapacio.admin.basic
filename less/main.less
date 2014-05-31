@@ -4,22 +4,22 @@
 
 @font-face {
     font-family: 'sinkin_sans400_regular';
-    src: url('../assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.eot');
-    src: url('../assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.woff') format('woff'),
-         url('../assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.ttf') format('truetype'),
-         url('../assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.svg#sinkin_sans400_regular') format('svg');
+    src: url('./assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.eot');
+    src: url('./assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.woff') format('woff'),
+         url('./assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.ttf') format('truetype'),
+         url('./assets/fonts/sinkinsans_400/SinkinSans-400Regular-webfont.svg#sinkin_sans400_regular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'sinkin_sans600_SemiBold';
-    src: url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.eot');
-    src: url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.woff') format('woff'),
-         url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.ttf') format('truetype'),
-         url('../assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.svg#sinkin_sans400_regular') format('svg');
+    src: url('./assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.eot');
+    src: url('./assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.woff') format('woff'),
+         url('./assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.ttf') format('truetype'),
+         url('./assets/fonts/sinkinsans_600/SinkinSans-600SemiBold-webfont.svg#sinkin_sans400_regular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -202,6 +202,8 @@ body{
   }
 }
 
+// settings
+
 #settings-form{
   h4{
     margin-top: 40px;
@@ -209,3 +211,15 @@ body{
   }
 }
 
+#folders{
+  li{
+    list-style: none;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+.selected{
+  color: #61b66e;
+}
