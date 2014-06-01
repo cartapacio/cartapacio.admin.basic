@@ -1,7 +1,9 @@
 'use strict';
 
 var $ = require('jquery'),
- Backbone = require('backbone')
+  Backbone = require('backbone'),
+  url = require('url'),
+  config = require('./config')
 
 Backbone.$ = $
 
@@ -18,7 +20,8 @@ var indexView = require('./views/index'),
   newNews = require('./views/news/newNewsView'),
   settingsView = require('./views/SettingsView'),
   statementView = require('./views/StatementView'),
-  DbConfig = require('./views/FileExplorerView')
+  DbConfig = require('./views/FileExplorerView'),
+  Navbar = require('./views/NavbarView')
 
 module.exports = Backbone.Router.extend({
   routes:{
@@ -35,7 +38,10 @@ module.exports = Backbone.Router.extend({
     'bio': 'bio',
     'statement': 'statement',
     'settings': 'settings',
-    'dbConfig': 'dbConfig'
+    'dbConfig': 'dbConfig',
+
+    'build': 'build',
+    'upload': 'upload'
   },
 
   index: function(){
@@ -125,11 +131,50 @@ module.exports = Backbone.Router.extend({
     this.appView(new DbConfig())
   },
 
+  build: function(){
+    console.info('router -- build ')
+    $.ajax({
+      url: url.resolve(config.CARTAPACIO_SERVER, 'build'),
+      type: 'get',
+      success: function (data) {
+        // TODO: update ui
+        console.warn('build done!');
+      },
+      error: function(data){
+        // TODO: update ui
+        console.warn('build error!');
+      }
+    })
+  },
+
+  upload: function(){
+    console.info('router -- upload ')
+    $.ajax({
+      url: url.resolve(config.CARTAPACIO_SERVER, 'upload'),
+      type: 'get',
+      success: function (data) {
+        // TODO: update ui
+        console.warn('build done!');
+      },
+      error: function(data){
+        // TODO: update ui
+        console.warn('build error!');
+      }
+    })
+  },
+
   appView: function(view){
     var self = this
     if (this.currentView){
       self.currentView.close();
     }
+
+    if(this.navbar){
+      self.navbar.close()
+    }
+
+    this.navbar = new Navbar()
+    $('#nav-content').html(this.navbar.el)
 
     this.currentView = view;
     this.currentView.render();

@@ -11,7 +11,7 @@ module.exports = Backbone.View.extend({
 
   initialize: function(){
     console.info('home view --- initialize')
-    //this.render()
+
   },
 
   events:{
@@ -22,6 +22,7 @@ module.exports = Backbone.View.extend({
     this.template = Template()
     // Dynamically updates the UI with the view's template
     this.$el.html(this.template);
+
     return this
   },
 
